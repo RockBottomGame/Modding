@@ -1,0 +1,9 @@
+/build
+/*.iml
+/*.ipr
+/*.iws
+/gamedata
+/Launcher.launch
+/.idea
+/rockbottom
+/.gradle
