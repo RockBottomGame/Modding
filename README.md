@@ -10,6 +10,9 @@ To set up an environment to make a mod, simply do the following:
     
 2. Run the gradle tasks `createIntelliJRuns` or `createEclipseRuns` for IntelliJ or Eclipse, respectively. This will create a run configuration that you can use to test your mod.
     * For Eclipse, to run the project, right-click `Launcher.launch` to launch the project
+    
+3. Put a compiled jar of the game into the `/gamedata` folder (you might have to create it first) that will then be used when launching the run configurations.
+    * You might have to refresh the gradle project in your IDE after doing this step for it to take effect
 
 ## Compiling the mod
 To make a jar containing your mod that you can then put into the `/mods` folder of your game instance, simple do the following: 

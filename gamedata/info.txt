@@ -1,2 +1,0 @@
-This is the directory where you have to put the version of Rock Bottom you want to use for development.
-After placing the .jar file inside this folder, refresh the gradle project.
