@@ -2,8 +2,9 @@
 /*.iml
 /*.ipr
 /*.iws
-/gamedata
 /Launcher.launch
 /.idea
 /rockbottom
 /.gradle
+/gamedata/*
+!/gamedata/info.txt

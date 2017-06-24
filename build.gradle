@@ -4,9 +4,6 @@ version '1.0.0'
 apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'eclipse'
-apply plugin: 'application'
-
-mainClassName = "de.ellpeck.rockbottom.Launcher"
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -22,18 +19,20 @@ dependencies {
     compile group: 'org.slick2d', name: 'slick2d-core', version: '1.0.2'
     compile group: 'io.netty', name: 'netty-all', version: '4.1.11.Final'
     compile group: 'net.sf.jopt-simple', name: 'jopt-simple', version: '4.9'
-    compile group: 'de.ellpeck.rockbottom', name: 'RockBottomAPI', version: '0.0.2-+'
+    compile group: 'de.ellpeck.rockbottom', name: 'RockBottomAPI', version: '+'
     runtime fileTree("./gamedata")
 }
 
-task createIntelliJRuns(){
-    def file = new File("$projectDir", ".idea" + File.separator + "runConfigurations" + File.separator + "Launch RockBottom.xml")
+task createIntelliJRuns{
+	group = 'ide'
+	description = 'Creates the project run configuration for IntelliJ IDEA'
+    def file = new File("$projectDir", ".idea" + File.separator + "runConfigurations" + File.separator + "Launch RB Default.xml")
     if(!file.exists()){
         file.getParentFile().mkdirs()
         file.createNewFile()
     }
     file.setText("<component name=\"ProjectRunConfigurationManager\">\n" +
-            "  <configuration default=\"false\" name=\"Launch RockBottom\" type=\"Application\" factoryName=\"Application\">\n" +
+            "  <configuration default=\"false\" name=\"Launch RB Default\" type=\"Application\" factoryName=\"Application\" singelton=\"true\">\n" +
             "    <extension name=\"coverage\" enabled=\"false\" merge=\"false\" sample_coverage=\"true\" runner=\"idea\" />\n" +
             "    <option name=\"MAIN_CLASS_NAME\" value=\"de.ellpeck.rockbottom.Launcher\" />\n" +
             "    <option name=\"VM_PARAMETERS\" value=\"\" />\n" +
@@ -49,10 +48,34 @@ task createIntelliJRuns(){
             "    <method />\n" +
             "  </configuration>\n" +
             "</component>", "UTF-8")
+	file = new File("$projectDir", ".idea" + File.separator + "runConfigurations" + File.separator + "Launch RB Debug.xml")
+    if(!file.exists()){
+        file.getParentFile().mkdirs()
+        file.createNewFile()
+    }
+    file.setText("<component name=\"ProjectRunConfigurationManager\">\n" +
+            "  <configuration default=\"false\" name=\"Launch RB Debug\" type=\"Application\" factoryName=\"Application\" singelton=\"true\">\n" +
+            "    <extension name=\"coverage\" enabled=\"false\" merge=\"false\" sample_coverage=\"true\" runner=\"idea\" />\n" +
+            "    <option name=\"MAIN_CLASS_NAME\" value=\"de.ellpeck.rockbottom.Main\" />\n" +
+            "    <option name=\"VM_PARAMETERS\" value=\"\" />\n" +
+            "    <option name=\"PROGRAM_PARAMETERS\" value=\"--unpackedModsDir ./build/classes/main --tempDir ./build/temp\" />\n" +
+            "    <option name=\"WORKING_DIRECTORY\" value=\"file://\$PROJECT_DIR\$\" />\n" +
+            "    <option name=\"ALTERNATIVE_JRE_PATH_ENABLED\" value=\"false\" />\n" +
+            "    <option name=\"ALTERNATIVE_JRE_PATH\" />\n" +
+            "    <option name=\"ENABLE_SWING_INSPECTOR\" value=\"false\" />\n" +
+            "    <option name=\"ENV_VARIABLES\" />\n" +
+            "    <option name=\"PASS_PARENT_ENVS\" value=\"true\" />\n" +
+            "    <module name=\"$project.name\" />\n" +
+            "    <envs />\n" +
+            "    <method />\n" +
+            "  </configuration>\n" +
+            "</component>", "UTF-8")
 }
 
-task createEclipseRuns(){
-    def file = new File("$projectDir", "Launcher.launch")
+task createEclipseRuns{
+	group = 'ide'
+	description = 'Creates the project run configuration for Eclipse'
+    def file = new File("$projectDir", "Launch Default.launch")
     if(!file.exists()){
         file.getParentFile().mkdirs()
         file.createNewFile()
@@ -60,7 +83,7 @@ task createEclipseRuns(){
     file.setText("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n" +
             "<launchConfiguration type=\"org.eclipse.jdt.launching.localJavaApplication\">\n" +
             "<listAttribute key=\"org.eclipse.debug.core.MAPPED_RESOURCE_PATHS\">\n" +
-            "<listEntry value=\"/Launch RockBottom\"/>\n" +
+            "<listEntry value=\"/Launch Default\"/>\n" +
             "</listAttribute>\n" +
             "<listAttribute key=\"org.eclipse.debug.core.MAPPED_RESOURCE_TYPES\">\n" +
             "<listEntry value=\"4\"/>\n" +
@@ -71,6 +94,27 @@ task createEclipseRuns(){
             "</listAttribute>\n" +
             "<stringAttribute key=\"org.eclipse.jdt.launching.MAIN_TYPE\" value=\"de.ellpeck.rockbottom.Launcher\"/>\n" +
             "<stringAttribute key=\"org.eclipse.jdt.launching.PROGRAM_ARGUMENTS\" value=\"--unpackedModsDir ./build/classes/main\"/>\n" +
+            "<stringAttribute key=\"org.eclipse.jdt.launching.PROJECT_ATTR\" value=\"$project.name\"/>\n" +
+            "</launchConfiguration>", "UTF-8")
+	file = new File("$projectDir", "Launch Debug.launch")
+    if(!file.exists()){
+        file.getParentFile().mkdirs()
+        file.createNewFile()
+    }
+    file.setText("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n" +
+            "<launchConfiguration type=\"org.eclipse.jdt.launching.localJavaApplication\">\n" +
+            "<listAttribute key=\"org.eclipse.debug.core.MAPPED_RESOURCE_PATHS\">\n" +
+            "<listEntry value=\"/Launch Debug\"/>\n" +
+            "</listAttribute>\n" +
+            "<listAttribute key=\"org.eclipse.debug.core.MAPPED_RESOURCE_TYPES\">\n" +
+            "<listEntry value=\"4\"/>\n" +
+            "</listAttribute>\n" +
+            "<listAttribute key=\"org.eclipse.debug.ui.favoriteGroups\">\n" +
+            "<listEntry value=\"org.eclipse.debug.ui.launchGroup.debug\"/>\n" +
+            "<listEntry value=\"org.eclipse.debug.ui.launchGroup.run\"/>\n" +
+            "</listAttribute>\n" +
+            "<stringAttribute key=\"org.eclipse.jdt.launching.MAIN_TYPE\" value=\"de.ellpeck.rockbottom.Main\"/>\n" +
+            "<stringAttribute key=\"org.eclipse.jdt.launching.PROGRAM_ARGUMENTS\" value=\"--unpackedModsDir ./build/classes/main --tempDir ./build/temp\"/>\n" +
             "<stringAttribute key=\"org.eclipse.jdt.launching.PROJECT_ATTR\" value=\"$project.name\"/>\n" +
             "</launchConfiguration>", "UTF-8")
 }
