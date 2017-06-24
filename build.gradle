@@ -27,6 +27,8 @@ dependencies {
 }
 
 task createIntelliJRuns(){
+    group = 'ide'
+    description = 'Creates the project run configuration for IntelliJ IDEA'
     def file = new File("$projectDir", ".idea" + File.separator + "runConfigurations" + File.separator + "Launch RockBottom.xml")
     if(!file.exists()){
         file.getParentFile().mkdirs()
@@ -35,9 +37,9 @@ task createIntelliJRuns(){
     file.setText("<component name=\"ProjectRunConfigurationManager\">\n" +
             "  <configuration default=\"false\" name=\"Launch RockBottom\" type=\"Application\" factoryName=\"Application\">\n" +
             "    <extension name=\"coverage\" enabled=\"false\" merge=\"false\" sample_coverage=\"true\" runner=\"idea\" />\n" +
-            "    <option name=\"MAIN_CLASS_NAME\" value=\"de.ellpeck.rockbottom.Launcher\" />\n" +
+            "    <option name=\"MAIN_CLASS_NAME\" value=\"de.ellpeck.rockbottom.Main\" />\n" +
             "    <option name=\"VM_PARAMETERS\" value=\"\" />\n" +
-            "    <option name=\"PROGRAM_PARAMETERS\" value=\"--unpackedModsDir ./build/classes/main\" />\n" +
+            "    <option name=\"PROGRAM_PARAMETERS\" value=\"--tempDir ${TEMP} --unpackedModsDir ./build/classes/main\" />\n" +
             "    <option name=\"WORKING_DIRECTORY\" value=\"file://\$PROJECT_DIR\$\" />\n" +
             "    <option name=\"ALTERNATIVE_JRE_PATH_ENABLED\" value=\"false\" />\n" +
             "    <option name=\"ALTERNATIVE_JRE_PATH\" />\n" +
@@ -52,6 +54,8 @@ task createIntelliJRuns(){
 }
 
 task createEclipseRuns(){
+    group = 'ide'
+    description = 'Creates the project run configuration for Eclipse'
     def file = new File("$projectDir", "Launcher.launch")
     if(!file.exists()){
         file.getParentFile().mkdirs()
@@ -69,8 +73,8 @@ task createEclipseRuns(){
             "<listEntry value=\"org.eclipse.debug.ui.launchGroup.debug\"/>\n" +
             "<listEntry value=\"org.eclipse.debug.ui.launchGroup.run\"/>\n" +
             "</listAttribute>\n" +
-            "<stringAttribute key=\"org.eclipse.jdt.launching.MAIN_TYPE\" value=\"de.ellpeck.rockbottom.Launcher\"/>\n" +
-            "<stringAttribute key=\"org.eclipse.jdt.launching.PROGRAM_ARGUMENTS\" value=\"--unpackedModsDir ./build/classes/main\"/>\n" +
+            "<stringAttribute key=\"org.eclipse.jdt.launching.MAIN_TYPE\" value=\"de.ellpeck.rockbottom.Main\"/>\n" +
+            "<stringAttribute key=\"org.eclipse.jdt.launching.PROGRAM_ARGUMENTS\" value=\"--tempDir ${TEMP} --unpackedModsDir ./build/classes/main\"/>\n" +
             "<stringAttribute key=\"org.eclipse.jdt.launching.PROJECT_ATTR\" value=\"$project.name\"/>\n" +
             "</launchConfiguration>", "UTF-8")
 }
