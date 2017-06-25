@@ -32,6 +32,8 @@ compileJava {
     source = processSources.destinationDir
 }
 
+compileJava.dependsOn(processSources)
+
 task createIntelliJRuns{
 	group = 'ide'
 	description = 'Creates the project run configuration for IntelliJ IDEA'
