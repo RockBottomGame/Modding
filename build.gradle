@@ -1,3 +1,5 @@
+import org.apache.tools.ant.filters.ReplaceTokens
+
 group 'com.example.examplemod'
 version '1.0.0'
 
@@ -21,6 +23,16 @@ dependencies {
     compile group: 'net.sf.jopt-simple', name: 'jopt-simple', version: '4.9'
     compile group: 'de.ellpeck.rockbottom', name: 'RockBottomAPI', version: '+'
     runtime fileTree("./gamedata")
+}
+
+task processSources(type: Copy) {
+    from sourceSets.main.allSource
+    into 'build/processedSrc'
+    filter(ReplaceTokens, tokens: ["VERSION": version])
+}
+
+compileJava {
+    source = processSources.destinationDir
 }
 
 task createIntelliJRuns{
