@@ -18,9 +18,6 @@ repositories {
 }
 
 dependencies {
-    compile group: 'org.slick2d', name: 'slick2d-core', version: '1.0.2'
-    compile group: 'io.netty', name: 'netty-all', version: '4.1.11.Final'
-    compile group: 'net.sf.jopt-simple', name: 'jopt-simple', version: '4.9'
     compile group: 'de.ellpeck.rockbottom', name: 'RockBottomAPI', version: '+'
     runtime fileTree("./gamedata")
 }
