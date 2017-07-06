@@ -46,8 +46,7 @@ public class ExampleMod implements IMod{
     }
 
     @Override
-    public void initAssets(IGameInstance game, IAssetManager assetManager, IApiHandler apiHandler)
-    {
+    public void initAssets(IGameInstance game, IAssetManager assetManager, IApiHandler apiHandler){
         Log.info("Localized text: "+assetManager.localize(RockBottomAPI.createRes(this, "test")));
     }
 }
