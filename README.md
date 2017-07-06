@@ -14,6 +14,9 @@ To set up an environment to make a mod, simply do the following:
 
 4. Put a compiled jar of the game into the `/gamedata` folder (you might have to create it first) that will then be used when launching the run configurations.
     * You might have to refresh the gradle project in your IDE after doing this step for it to take effect
+    
+5. To enable hot swapping you need to set you ide compile output path to `/build/classes/`
+   * To do this for IntelliJ you should go to your `Project Structure`(Ctrl+Alt+Shift+S), then you should go to the `Project` tab and make sure that you set the above mentioned path as the `Project compiler output`
 
 ## Compiling a jar of the mod
 To make a jar containing your mod that you can then put into the `/mods` folder of your game instance, simple do the following: 
