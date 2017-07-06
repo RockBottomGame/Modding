@@ -1,4 +1,4 @@
-group 'alexanders.mods.cg'
+group 'com.example.examplemod'
 version '0.1'
 
 apply from: "https://github.com/RockBottomGame/Gradle/raw/master/buildscript.gradle"
