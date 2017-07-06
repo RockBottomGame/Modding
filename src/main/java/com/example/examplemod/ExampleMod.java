@@ -39,10 +39,15 @@ public class ExampleMod implements IMod{
     }
 
     @Override
-    public void init(IGameInstance game, IAssetManager assetManager, IApiHandler apiHandler, IEventHandler eventHandler){
+    public void init(IGameInstance game, IApiHandler apiHandler, IEventHandler eventHandler){
         Log.info("Starting ExampleMod for RockBottom");
-
+        
         RockBottomAPI.MANUAL_CONSTRUCTION_RECIPES.add(new BasicRecipe(new ItemInstance(GameContent.ITEM_SUPER_TOOL), new ItemInstance(GameContent.TILE_DIRT, 64)));
+    }
+
+    @Override
+    public void initAssets(IGameInstance game, IAssetManager assetManager, IApiHandler apiHandler)
+    {
         Log.info("Localized text: "+assetManager.localize(RockBottomAPI.createRes(this, "test")));
     }
 }
