@@ -6,6 +6,10 @@ import de.ellpeck.rockbottom.api.IGameInstance;
 import de.ellpeck.rockbottom.api.RockBottomAPI;
 import de.ellpeck.rockbottom.api.assets.IAssetManager;
 import de.ellpeck.rockbottom.api.construction.BasicRecipe;
+import de.ellpeck.rockbottom.api.construction.resource.ItemUseInfo;
+import de.ellpeck.rockbottom.api.construction.resource.ResInfo;
+import de.ellpeck.rockbottom.api.construction.resource.ResUseInfo;
+import de.ellpeck.rockbottom.api.construction.resource.ResourceRegistry;
 import de.ellpeck.rockbottom.api.event.IEventHandler;
 import de.ellpeck.rockbottom.api.item.ItemInstance;
 import de.ellpeck.rockbottom.api.mod.IMod;
@@ -41,8 +45,22 @@ public class ExampleMod implements IMod{
     @Override
     public void init(IGameInstance game, IApiHandler apiHandler, IEventHandler eventHandler){
         Log.info("Starting ExampleMod for RockBottom");
-        
-        RockBottomAPI.MANUAL_CONSTRUCTION_RECIPES.add(new BasicRecipe(new ItemInstance(GameContent.ITEM_SUPER_TOOL), new ItemInstance(GameContent.TILE_DIRT, 64)));
+
+        //Add a manual construction recipe based on item inputs
+        RockBottomAPI.MANUAL_CONSTRUCTION_RECIPES.add(new BasicRecipe(
+                new ItemInstance(GameContent.ITEM_SUPER_TOOL),
+                new ItemUseInfo(new ItemInstance(GameContent.TILE_DIRT, 100))));
+
+        //Add a construction table recipe based on resource registry inputs
+        RockBottomAPI.CONSTRUCTION_TABLE_RECIPES.add(new BasicRecipe(
+                new ItemInstance(GameContent.ITEM_SUPER_TOOL),
+                new ResUseInfo(ResourceRegistry.PEBBLES, 100)
+        ));
+
+        //Add a custom resource
+        ResourceRegistry.addResources("test_resource", new ResInfo(GameContent.ITEM_COAL));
+
+        //Etc
     }
 
     @Override
