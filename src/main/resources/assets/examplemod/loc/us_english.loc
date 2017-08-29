@@ -1,1 +1,5 @@
-examplemod/test=This is a localized test string
+{
+  "examplemod": {
+    "test": "This is a localized test string"
+  }
+}
