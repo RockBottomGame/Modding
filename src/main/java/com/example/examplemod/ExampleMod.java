@@ -45,7 +45,7 @@ public class ExampleMod implements IMod{
 
     @Override
     public String getResourceLocation(){
-        return "/assets/examplemod";
+        return "assets/examplemod";
     }
 
     @Override
@@ -69,7 +69,7 @@ public class ExampleMod implements IMod{
     }
 
     @Override
-    public void initAssets(IGameInstance game, IAssetManager assetManager, IApiHandler apiHandler){
+    public void postInitAssets(IGameInstance game, IAssetManager assetManager, IApiHandler apiHandler){
         this.modLogger.info("Localized text: "+assetManager.localize(RockBottomAPI.createRes(this, "test")));
     }
 }
