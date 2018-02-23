@@ -7,6 +7,10 @@ processSources {
     replace("VERSION", version)
 }
 
+sourceSets.main {
+    java.setOutputDir(new File("build/classes/main"))
+}
+
 dependencies {
     compile group: 'de.ellpeck.rockbottom', name: 'RockBottomAPI', version: '+'
 }
