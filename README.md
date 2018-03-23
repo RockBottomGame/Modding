@@ -22,5 +22,12 @@ To set up an environment to make a mod, simply do the following:
 ## Compiling a jar of the mod
 To make a jar containing your mod that you can then put into the `/mods` folder of your game instance, simple do the following: 
 
-2. Run the gradle task `gradlew build` to compile a mod jar
-1. You can then find the jar in `/build/libs`
+1. Run the gradle task `gradlew build` to compile a mod jar
+
+2. You can then find the jar in `/build/libs`
+
+## Resolving issues
+There are some issues you might run into when setting up or using the modding environment. Here are some solutions:
+
+### The Example Mod is still there after renaming the files
+This might have happened if you ran your game before changing the example mod files to be your mod's files instead. This means that gradle's compile output path still contains the example mod files. To resolve this, simply run the gradle task `clean` and it will remove the remaining example mod files from the output path.
