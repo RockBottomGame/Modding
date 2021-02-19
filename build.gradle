@@ -1,7 +1,7 @@
 group 'com.example.examplemod'
 version '0.1'
 
-apply from: "https://github.com/RockBottomGame/Gradle/raw/master/buildscript.gradle"
+apply from: "https://github.com/RockBottomGame/Gradle/raw/main/buildscript.gradle"
 
 processSources {
     replace("VERSION", version)
@@ -9,5 +9,5 @@ processSources {
 
 dependencies {
     // Replace the '+' with the actual version you want to use.
-    compile group: 'de.ellpeck.rockbottom', name: 'RockBottomAPI', version: '+'
+    compile group: 'de.ellpeck.rockbottom', name: 'RockBottomApi', version: '+'
 }
