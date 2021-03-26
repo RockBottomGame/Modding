@@ -10,4 +10,5 @@ processSources {
 dependencies {
     // Replace the '+' with the actual version you want to use.
     compile group: 'de.ellpeck.rockbottom', name: 'RockBottomApi', version: '+'
+    runtime group: 'de.ellpeck.rockbottom', name: 'RockBottom', version: '+'
 }
